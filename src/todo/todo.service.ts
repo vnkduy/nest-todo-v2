@@ -26,7 +26,7 @@ export class TodoService {
       }
       throw new HttpException(
         {
-          message: 'Some thing went wrong !',
+          message: 'Something went wrong !',
         },
         HttpStatus.BAD_REQUEST,
       );
@@ -56,7 +56,7 @@ export class TodoService {
       }
       throw new HttpException(
         {
-          message: 'Some thing went wrong !',
+          message: 'Something went wrong !',
         },
         HttpStatus.BAD_REQUEST,
       );
@@ -97,7 +97,7 @@ export class TodoService {
       }
       throw new HttpException(
         {
-          message: 'Some thing went wrong !',
+          message: 'Something went wrong !',
         },
         HttpStatus.BAD_REQUEST,
       );
@@ -122,7 +122,7 @@ export class TodoService {
       }
       throw new HttpException(
         {
-          message: 'Some thing went wrong !',
+          message: 'Something went wrong !',
         },
         HttpStatus.BAD_REQUEST,
       );

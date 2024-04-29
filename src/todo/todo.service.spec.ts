@@ -98,6 +98,17 @@ describe('TodoService', () => {
         ),
       );
     });
+    it('should throw message something when wrong', async () => {
+      jest.spyOn(prismaService.todo, 'create').mockRejectedValue(new Error());
+      await expect(todoService.createTodo(mockNewTodo)).rejects.toThrow(
+        new HttpException(
+          {
+            message: 'Something went wrong !',
+          },
+          HttpStatus.BAD_REQUEST,
+        ),
+      );
+    });
     it('should create a new todo', async () => {
       jest.spyOn(prismaService.todo, 'create').mockResolvedValue(mockTodo);
       const result = await todoService.createTodo(mockNewTodo);
@@ -105,7 +116,6 @@ describe('TodoService', () => {
       expect(result).toEqual(mockTodo.id);
     });
   });
-
   describe('updateById', () => {
     const mockUpdateTodo = {
       title: 'Test',
@@ -147,7 +157,7 @@ describe('TodoService', () => {
       ).rejects.toThrow(
         new HttpException(
           {
-            message: 'Some thing went wrong !',
+            message: 'Something went wrong !',
           },
           HttpStatus.BAD_REQUEST,
         ),
@@ -165,7 +175,6 @@ describe('TodoService', () => {
       expect(result).toEqual(mockTodo.id);
     });
   });
-
   describe('deleteTodo', () => {
     it('should delete successfully', async () => {
       jest.spyOn(prismaService.todo, 'delete');
@@ -196,7 +205,7 @@ describe('TodoService', () => {
       await expect(todoService.deleteTodo(mockTodo.id)).rejects.toThrow(
         new HttpException(
           {
-            message: 'Some thing went wrong !',
+            message: 'Something went wrong !',
           },
           HttpStatus.BAD_REQUEST,
         ),
